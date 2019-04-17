@@ -4,16 +4,13 @@
   <meta charset="utf-8">
   <title> JOIN WebRTC channel </title>
   <link href="noserv.css" rel="stylesheet">
-  <script 
-src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 <h2>  JOIN WebRTC channel  <span id="status"> init </span> </h2>
 <h3> 2.GET Offer's SDP</h3>
-<textarea id="creater-sdp" placeholder="HERE COPY & PASTE [1.CREATE 
-Offer's SDP]"></textarea>
-<h3> 3.CREATE Participant'S SDP <button id="create">CREATE</button> 
-</h3>
+<textarea id="creater-sdp" placeholder="HERE COPY & PASTE [1.CREATE Offer's SDP]"></textarea>
+<h3> 3.CREATE Participant'S SDP <button id="create">CREATE</button> </h3>
 <textarea id="joiner-sdp"></textarea>
 <h3> Received capture </h3>
  <canvas id="capture" height=300 width=300></canvas>
@@ -36,14 +33,12 @@ pc.oniceconnectionstatechange = function(e) {
 };
 
 function dcInit(dc) {
-  dc.onopen    = function()  
-{$("textarea").attr("disabled",true);addMSG("CONNECTED!", "info")};
+  dc.onopen    = function()  {$("textarea").attr("disabled",true);addMSG("CONNECTED!", "info")};
   dc.onmessage = function(e) {if (e.data) addMSG(e.data, "other");}
 }
 
 function createAnswerSDP() {
-  var offerDesc = new 
-RTCSessionDescription(JSON.parse($("#creater-sdp").val()));
+  var offerDesc = new RTCSessionDescription(JSON.parse($("#creater-sdp").val()));
   pc.setRemoteDescription(offerDesc)
   pc.createAnswer(function (answerDesc) {
     pc.setLocalDescription(answerDesc)
@@ -70,4 +65,3 @@ $("#send").click(sendMSG);
 </script>
 </body>
 </html>
-

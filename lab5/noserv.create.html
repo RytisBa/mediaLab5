@@ -2,8 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, 
-user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
     <meta id="theme-color" name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="css/main.css">
@@ -14,16 +13,14 @@ user-scalable=yes, initial-scale=1, maximum-scale=1">
     </style>
   <title> CREATE WebRTC channel </title>
   <link href="noserv.css" rel="stylesheet">
-  <script 
-src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 <h2> CREATE WebRTC channel <span id="status"> init </span></h2>
 <h3> 1.CREATE Offer's SDP </h3>
 <textarea id="creater-sdp"></textarea>
 <h3> 4.GET Participant's SDP <button id="start">start</button></h3>
-<textarea id="joiner-sdp" placeholder="HERE COPY AND PASTE 
-[3.Participant'S SDP]"></textarea>
+<textarea id="joiner-sdp" placeholder="HERE COPY AND PASTE [3.Participant'S SDP]"></textarea>
 <h3> Live Camera </h3>
 <div id="chat">
     <video playsinline autoplay></video>
@@ -31,8 +28,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script
     <button id="send">send</button></div>
 </div>
 
-<script 
-src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="js/main.js" async></script>
 
 <script>
@@ -62,9 +58,7 @@ function createOfferSDP() {
   pc.createOffer().then(function(e) {
     pc.setLocalDescription(e)
   });
-  dc.onopen = 
-function(){$("textarea").attr("disabled",true);addMSG("CONNECTED!", 
-"info")};
+  dc.onopen = function(){$("textarea").attr("disabled",true);addMSG("CONNECTED!", "info")};
   dc.onmessage = function(e) {
     if (e.data) addMSG(e.data, "other");
   }
@@ -87,8 +81,7 @@ createOfferSDP();
 
 function sendMSG() {
 
-	canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, 
-canvas.height);
+	canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
 	pngUrl = canvas.toDataURL();
 
   var value = pngUrl;
@@ -105,4 +98,3 @@ $("#send").click(sendMSG);
 </script>
 </body>
 </html>
-
